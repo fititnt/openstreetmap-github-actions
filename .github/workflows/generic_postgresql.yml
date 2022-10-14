@@ -1,0 +1,56 @@
+name: generic_postgresql
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  generic_postgresql:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      #### actions/checkout ____________________________________________________
+      # @see https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+
+      #### PostgreSQL install __________________________________________________
+      - name: Start PostgreSQL on Ubuntu
+        run: |
+          sudo systemctl start postgresql.service
+          pg_isready
+
+      #### PostgreSQL setup database and users _________________________________
+      # @see https://www.cybertec-postgresql.com/en/postgresql-github-actions-continuous-integration/
+      - name: Create scheduler user
+        run: |
+          sudo -u postgres psql --command="CREATE USER scheduler PASSWORD 'somestrong'" --command="\du"
+
+      - name: Create timetable database
+        run: |
+          sudo -u postgres createdb --owner=scheduler timetable
+          PGPASSWORD=somestrong psql --username=scheduler --host=localhost --list timetable
+
+      # #### main ________________________________________________________________
+      # - run: bash .github/scripts/salve_mundi.sh
+
+      # # Runs a single command using the runners shell
+      # - name: Run a one-line script
+      #   run: echo Hello, world!
+
+      # # Runs a set of commands using the runners shell
+      # - name: Run a multi-line script
+      #   run: |
+      #     echo Add other actions to build,
+      #     echo test, and deploy your project.
+
+### temp notes
+# - https://remarkablemark.org/blog/2021/03/14/setup-postgresql-in-github-actions/
+# - https://www.cybertec-postgresql.com/en/postgresql-github-actions-continuous-integration/
+# - https://github.com/Harmon758/postgresql-action

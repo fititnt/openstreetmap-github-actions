@@ -1,4 +1,4 @@
-name: generic_bash
+name: generic_java
 
 # Controls when the workflow will run
 on:
@@ -12,26 +12,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  generic_bash:
+  generic_java:
     runs-on: ubuntu-latest
-    # continue-on-error: true
+    continue-on-error: true
     steps:
       #### actions/checkout ____________________________________________________
       # @see https://github.com/actions/checkout
       - uses: actions/checkout@v3
 
-      #### bash setup __________________________________________________________
-      # Already installed
+      #### setup-java __________________________________________________________
+      # @see https://github.com/actions/setup-java
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin" # See 'Supported distributions' for available options
+          java-version: "17"
 
       #### main ________________________________________________________________
-      - run: bash .github/scripts/salve_mundi.sh
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - run: java .github/scripts/salve_mundi.java

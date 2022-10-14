@@ -1,3 +1,3 @@
 <?php
 
-echo "Salve mundi!";
+echo "Salve mundi!\n";

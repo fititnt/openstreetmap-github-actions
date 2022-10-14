@@ -14,7 +14,7 @@ on:
 jobs:
   generic_python:
     runs-on: ubuntu-latest
-    continue-on-error: true
+    # continue-on-error: true
     steps:
       #### actions/checkout ____________________________________________________
       # @see https://github.com/actions/checkout
