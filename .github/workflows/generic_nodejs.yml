@@ -1,0 +1,33 @@
+name: generic_nodejs
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  generic_nodejs:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      #### actions/checkout ____________________________________________________
+      # @see https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+
+      #### setup-ruby __________________________________________________________
+      # @see https://github.com/actions/setup-node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      # - run: yarn install --frozen-lockfile # optional, --immutable
+      # - run: yarn test
+
+      #### main ________________________________________________________________
+      - run: node .github/scripts/salve_mundi.js
