@@ -7,3 +7,13 @@
   - https://github.com/openstreetmap
   - https://github.com/osmlab
 - https://github.com/appleboy/telegram-action
+- JOSM cli
+  - https://wiki.openstreetmap.org/wiki/JOSM/Plugins/CommandLine
+  - https://github.com/Foxhind/JOSM-CommandLine-commands
+
+
+  <!--
+  - Maybe
+    - https://github.com/marketplace/actions/workflow-webhook-action
+    - https://kontent.ai/blog/how-to-trigger-github-action-using-webhook-with-no-code/
+  -->

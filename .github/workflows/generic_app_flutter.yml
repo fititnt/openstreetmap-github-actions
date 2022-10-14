@@ -1,0 +1,72 @@
+name: generic_app_flutter
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  generic_app_flutter:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      #### actions/checkout ____________________________________________________
+      # @see https://github.com/actions/checkout
+      # This will checkout ANOTHER repository
+      - uses: actions/checkout@v3
+        with:
+          repository: "OsmPernambuco/ReciBus"
+
+      #### flutter-action _______________________________________________________
+      # @see https://github.com/subosito/flutter-action
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.0.5"
+          channel: "stable"
+
+      - run: flutter --version
+
+      #### flutter, build ______________________________________________________
+      # @see https://github.com/subosito/flutter-action
+      - run: flutter pub get
+      - run: flutter test
+        continue-on-error: true
+
+      # Build Android APK and app bundle:
+      - run: flutter build apk
+      - run: flutter build appbundle
+
+      # Build for the web:
+      - run: flutter build web
+
+      #### uplad-artifact _____________________________________________________
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: Display structure of downloaded files
+        run: ls -lha
+
+      # - run: flutter build web
+      # - run: 'echo "TODO: discover where web folder is, then upload it as zip"'
+
+      - uses: actions/upload-artifact@v2
+        continue-on-error: true
+        with:
+          name: flutter_app.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - run: flutter build appbundle
+
+      - uses: actions/upload-artifact@v2
+        continue-on-error: true
+        with:
+          name: flutter_app.aab
+          path: build/app/outputs/bundle/release/app-release.aab
+# @TODO https://github.com/HXL-CPLP/github-actions-example-flutter/blob/main/.github/workflows/03-flutter-quick-test.yml
+# @TODO https://github.com/HXL-CPLP/github-actions-example-flutter/blob/main/.github/workflows/07-flutter-release.yml

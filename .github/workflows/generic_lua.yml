@@ -14,7 +14,7 @@ on:
 jobs:
   generic_lua:
     runs-on: ubuntu-latest
-    # continue-on-error: true
+    continue-on-error: true
     steps:
       #### actions/checkout ____________________________________________________
       # @see https://github.com/actions/checkout
@@ -22,7 +22,8 @@ jobs:
 
       #### setup-lua ___________________________________________________________
       # @see https://github.com/xpol/setup-lua
-      - uses: xpol/setup-lua@v1
+      # - uses: xpol/setup-lua@v1
+      - uses: xpol/setup-lua@v0.3
 
       #### main ________________________________________________________________
       - run: lua .github/scripts/salve_mundi.lua
