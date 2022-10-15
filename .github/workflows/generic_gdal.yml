@@ -1,0 +1,42 @@
+# WORKING DRAFT; not full implemented
+
+name: generic_gdal
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  generic_gdal:
+    runs-on: ubuntu-latest
+    # runs-on: ubuntu-20.04
+    continue-on-error: true
+    steps:
+      #### actions/checkout ____________________________________________________
+      # @see https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+
+      #### Setup GDAL install __________________________________________________
+      # NOTE: Ubuntu tends to have acceptable okay version of GDAL
+      #       so let's try first use the default ones
+      # @see https://launchpad.net/~ubuntugis/+archive/ubuntu/ppa
+      # - run: sudo add-apt-repository ppa:ubuntugis/ppa
+      #   continue-on-error: true
+      # - run: sudo apt update
+      #   continue-on-error: true
+      - run: sudo apt install gdal-bin
+        continue-on-error: true
+
+      #### main ________________________________________________________________
+
+
+### temp
+# https://gis.stackexchange.com/questions/370736/installing-gdal-on-ubuntu-20-04-unmet-dependencies
+# https://launchpad.net/~ubuntugis/+archive/ubuntu/ppa
