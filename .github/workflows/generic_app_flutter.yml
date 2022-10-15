@@ -38,12 +38,14 @@ jobs:
       - run: flutter test
         continue-on-error: true
 
-      # Build Android APK and app bundle:
-      - run: flutter build apk
-      - run: flutter build appbundle
-
       # Build for the web:
       - run: flutter build web
+
+      # Build Android APK and app bundle:
+      - run: flutter build apk
+      # Built build/app/outputs/flutter-apk/app-release.apk (23.4MB).
+
+      - run: flutter build appbundle
 
       #### uplad-artifact _____________________________________________________
       - name: Display structure of downloaded files
