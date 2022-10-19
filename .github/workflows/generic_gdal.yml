@@ -31,7 +31,7 @@ jobs:
       #   continue-on-error: true
       # - run: sudo apt update
       #   continue-on-error: true
-      - run: sudo apt install gdal-bin
+      - run: sudo apt-get install gdal-bin
         continue-on-error: true
 
       #### main ________________________________________________________________

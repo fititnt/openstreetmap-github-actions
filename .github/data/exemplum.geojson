@@ -1,81 +1,31 @@
 {
   "type": "FeatureCollection",
+  "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
   "features": [
     {
       "type": "Feature",
+      "properties": {
+        "place_id": 46054995,
+        "osm_type": "node",
+        "osm_id": 3815077900,
+        "display_name": "Soul Buoy",
+        "place_rank": 30,
+        "category": "man_made",
+        "type": "monitoring_station",
+        "importance": 0.0001
+      },
+      "bbox": [
+        -0.00005,
+        -0.00005,
+        0.00005,
+        0.00005
+      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.0,
-          0.5
+          0,
+          0
         ]
-      },
-      "properties": {
-        "prop0": "value0"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            102.0,
-            0.0
-          ],
-          [
-            103.0,
-            1.0
-          ],
-          [
-            104.0,
-            0.0
-          ],
-          [
-            105.0,
-            1.0
-          ]
-        ]
-      },
-      "properties": {
-        "prop0": "value0",
-        "prop1": 0.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              100.0,
-              0.0
-            ],
-            [
-              101.0,
-              0.0
-            ],
-            [
-              101.0,
-              1.0
-            ],
-            [
-              100.0,
-              1.0
-            ],
-            [
-              100.0,
-              0.0
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "prop0": "value0",
-        "prop1": {
-          "this": "that"
-        }
       }
     }
   ]

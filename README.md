@@ -98,16 +98,36 @@ GitHub Actions também também ser usadas para gerar sites estáticos gratuitame
   - https://github.com/osmlab
 - [ ] Exemplo de integração de Bot com Telegram
   - https://github.com/appleboy/telegram-action
-- [ ] JOSM cli
+- [ ] JOSM CLI
   - https://wiki.openstreetmap.org/wiki/JOSM/Plugins/CommandLine
   - https://github.com/Foxhind/JOSM-CommandLine-commands
+- [ ] Nominatim CLI
+  - (?) https://nominatim.org/2021/02/25/nominatim-tool.html
 
 
-  <!--
-  - Maybe
-    - https://github.com/marketplace/actions/workflow-webhook-action
-    - https://kontent.ai/blog/how-to-trigger-github-action-using-webhook-with-no-code/
-  -->
+<!--
+- Maybe
+  - https://github.com/marketplace/actions/workflow-webhook-action
+  - https://kontent.ai/blog/how-to-trigger-github-action-using-webhook-with-no-code/
+-->
+
+<!--
+- nominatim
+  - https://nominatim.org/2021/02/25/nominatim-tool.html
+  - https://github.com/mocnik-science/osm-python-tools
+  - protobuf 
+    - https://github.com/mapbox/geobuf (NodeJS)
+    - https://github.com/pygeobuf/pygeobuf (Python)
+-->
+
+<!--
+# https://github.com/pygeobuf/pygeobuf
+pip install geobuf
+
+geobuf encode < .github/data/exemplum.geojson > temp/exemplum.pbf
+geobuf encode < temp/exemplum.pbf > temp/exemplum.pbf.geojson
+
+-->
 
 ## Licença
 
